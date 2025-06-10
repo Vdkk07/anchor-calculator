@@ -12,36 +12,36 @@ pub mod anchor_cal {
         Ok(())
     }
 
-    pub fn double(ctx: Context<Double>) -> Result<()> {
+    pub fn double(ctx: Context<Modify>) -> Result<()> {
         ctx.accounts.account.num = ctx.accounts.account.num * 2;
 
         Ok(())
     }
-    pub fn half(ctx: Context<Half>) -> Result<()> {
+    pub fn half(ctx: Context<Modify>) -> Result<()> {
         ctx.accounts.account.num = ctx.accounts.account.num / 2;
 
         Ok(())
     }
 
-    pub fn add(ctx: Context<Add>, num: u32) -> Result<()> {
+    pub fn add(ctx: Context<Modify>, num: u32) -> Result<()> {
         ctx.accounts.account.num = ctx.accounts.account.num + num;
 
         Ok(())
     }
 
-    pub fn sub(ctx: Context<Sub>, num: u32) -> Result<()> {
+    pub fn sub(ctx: Context<Modify>, num: u32) -> Result<()> {
         ctx.accounts.account.num = ctx.accounts.account.num - num;
 
         Ok(())
     }
 
-    pub fn mul(ctx: Context<Mul>, num: u32) -> Result<()> {
+    pub fn mul(ctx: Context<Modify>, num: u32) -> Result<()> {
         ctx.accounts.account.num = ctx.accounts.account.num * num;
 
         Ok(())
     }
 
-    pub fn div(ctx: Context<Div>, num: u32) -> Result<()> {
+    pub fn div(ctx: Context<Modify>, num: u32) -> Result<()> {
         ctx.accounts.account.num = ctx.accounts.account.num / num;
 
         Ok(())
@@ -63,47 +63,7 @@ pub struct Initialize<'info> {
 }
 
 #[derive(Accounts)]
-pub struct Double<'info> {
-    #[account(mut)]
-    pub account: Account<'info, DataShape>,
-    #[account(mut)]
-    pub signer: Signer<'info>,
-}
-
-#[derive(Accounts)]
-pub struct Half<'info> {
-    #[account(mut)]
-    pub account: Account<'info, DataShape>,
-    #[account(mut)]
-    pub signer: Signer<'info>,
-}
-
-#[derive(Accounts)]
-pub struct Add<'info> {
-    #[account(mut)]
-    pub account: Account<'info, DataShape>,
-    #[account(mut)]
-    pub signer: Signer<'info>,
-}
-
-#[derive(Accounts)]
-pub struct Sub<'info> {
-    #[account(mut)]
-    pub account: Account<'info, DataShape>,
-    #[account(mut)]
-    pub signer: Signer<'info>,
-}
-
-#[derive(Accounts)]
-pub struct Mul<'info> {
-    #[account(mut)]
-    pub account: Account<'info, DataShape>,
-    #[account(mut)]
-    pub signer: Signer<'info>,
-}
-
-#[derive(Accounts)]
-pub struct Div<'info> {
+pub struct Modify<'info> {
     #[account(mut)]
     pub account: Account<'info, DataShape>,
     #[account(mut)]
